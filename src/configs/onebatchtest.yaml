@@ -1,0 +1,17 @@
+defaults:
+  - baseline
+  - _self_
+
+datasets:
+  train:
+    limit: 1
+  val:
+    limit: 1
+
+trainer:
+  n_epochs: 200
+  log_step: 1
+  save_period: 50
+  early_stop: null
+  override: True
+  monitor: "off"
