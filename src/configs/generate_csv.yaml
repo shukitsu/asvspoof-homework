@@ -1,7 +1,7 @@
 defaults:
   - model: lcnn
   - metrics: eer
-  - datasets: asvspoof
+  - datasets: asvspoof_kaggle
   - dataloader: example
   - transforms: stft
   - _self_

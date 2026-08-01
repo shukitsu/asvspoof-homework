@@ -11,7 +11,7 @@ def main(config):
     set_random_seed(config.inferencer.seed)
     device = "cuda" if torch.cuda.is_available() else "cpu"
 
-    dataloaders, batch_transforms = get_dataloaders(config, device)
+    dataloaders, _ = get_dataloaders(config, device)
 
     model = instantiate(config.model).to(device)
     checkpoint_path = "saved/testing/model_best.pth"
