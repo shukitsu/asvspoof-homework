@@ -1,5 +1,5 @@
 train:
-  limit: 500
+
 
   _target_: src.datasets.ASVSpoofDataset
 
@@ -13,7 +13,7 @@ train:
 
 
 val:
-  limit: 100
+
   _target_: src.datasets.ASVSpoofDataset
 
   dataset_dir: data/LA/ASVspoof2019_LA_dev
@@ -26,7 +26,7 @@ val:
 
 
 test:
-  limit: 100
+
   _target_: src.datasets.ASVSpoofDataset
 
   dataset_dir: data/LA/ASVspoof2019_LA_eval
