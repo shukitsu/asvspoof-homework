@@ -1,0 +1,14 @@
+train:
+  data_object:
+    _target_: src.transforms.STFTTransform
+    n_fft: 512
+    hop_length: 160
+    win_length: 400
+
+
+inference:
+  data_object:
+    _target_: src.transforms.STFTTransform
+    n_fft: 512
+    hop_length: 160
+    win_length: 400

@@ -1,25 +1,40 @@
 import torch
+import torch.nn.functional as F
 
 
-def collate_fn(dataset_items: list[dict]):
-    """
-    Collate and pad fields in the dataset items.
-    Converts individual items into a batch.
+def collate_fn(dataset_items):
 
-    Args:
-        dataset_items (list[dict]): list of objects from
-            dataset.__getitem__.
-    Returns:
-        result_batch (dict[Tensor]): dict, containing batch-version
-            of the tensors.
-    """
+    specs = []
+    labels = []
 
-    result_batch = {}
 
-    # example of collate_fn
-    result_batch["data_object"] = torch.vstack(
-        [elem["data_object"] for elem in dataset_items]
+    max_length = max(
+        item["data_object"].shape[-1]
+        for item in dataset_items
     )
-    result_batch["labels"] = torch.tensor([elem["labels"] for elem in dataset_items])
 
-    return result_batch
+
+    for item in dataset_items:
+
+        spec = item["data_object"]
+
+        padding = (
+            max_length
+            - spec.shape[-1]
+        )
+
+
+        spec = F.pad(
+            spec,
+            (0, padding)
+        )
+
+
+        specs.append(spec)
+        labels.append(item["labels"])
+
+
+    return {
+        "data_object": torch.stack(specs),
+        "labels": torch.tensor(labels),
+    }

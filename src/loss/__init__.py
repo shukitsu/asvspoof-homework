@@ -1,1 +1,5 @@
-from src.loss.example import ExampleLoss
+from src.loss.cross_entropy import CrossEntropyLoss
+
+__all__ = [
+    "CrossEntropyLoss",
+]

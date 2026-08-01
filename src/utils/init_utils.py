@@ -113,6 +113,10 @@ def saving_init(save_dir, config):
     """
     run_id = None
 
+    print("override =", config.trainer.override)
+    print("save_dir =", save_dir)
+    print("exists =", save_dir.exists())
+
     if save_dir.exists():
         if config.trainer.get("resume_from") is not None:
             run_id = resume_config(save_dir)
