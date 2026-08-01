@@ -4,9 +4,12 @@ defaults:
 
 datasets:
   train:
-    limit: 1
+    limit: 64
   val:
-    limit: 1
+    limit: 64
+
+dataloader:
+  batch_size: 64
 
 trainer:
   n_epochs: 200
